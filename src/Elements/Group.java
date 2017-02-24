@@ -11,6 +11,10 @@ public class Group extends Observable {
 		this.users = users;
 	}
 	
+	public Group(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return (this.name);
 	}

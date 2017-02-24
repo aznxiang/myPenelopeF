@@ -8,12 +8,17 @@ public class Project extends Observable {
 	private String path;
 	private Vector<Group> groups;
 	private Vector<Document> documents;
+	private Vector<Task> tasks;
 	
 	public Project(String name, String path, Vector<Group> groups) {
 		this.name = name;
 		this.path = path;
 		this.groups = groups;
 		this.documents = new Vector<Document>();
+	}
+	
+	public Project(String name) {
+		this.name = name;
 	}
 	
 	public String getName() {
@@ -46,6 +51,14 @@ public class Project extends Observable {
 	
 	public void setDocuments(Vector<Document> documents) {
 		this.documents = documents;
+	}
+	
+	public Vector<Task> getTasks() {
+		return (this.tasks);
+	}
+	
+	public void setTasks(Vector<Task> tasks) {
+		this.tasks = tasks;
 	}
 	
 	//TODO
