@@ -5,19 +5,24 @@ import java.util.Vector;
 public class Dashboard implements IObserver{
 	
 	private Vector<Message> messages;
+	private static Dashboard instance;
 	
 	private Dashboard() {
 	}
 	
-	private static Dashboard dashboard = new Dashboard();
-	
 	public static Dashboard getInstance() {
-		return dashboard;
+		if (instance == null) {
+			instance = new Dashboard();
+			instance.messages = new Vector<Message>();
+		}
+		return (instance);
 	}
 	
 	public void notifyChange(Message message) {
 		messages.add(message);
-		//TODO
-		//updateView();
+	}
+	
+	public Vector<Message> getMessages() {
+		return (messages);
 	}
 }
