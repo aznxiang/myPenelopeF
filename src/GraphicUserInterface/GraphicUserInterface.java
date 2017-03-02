@@ -86,13 +86,17 @@ public class GraphicUserInterface extends Application {
 	//TODO
 	//change this function when recover by JSON will be implemented
 	private void getJsonDatas() {
+		// Retrieve Users
+		Vector<User> users = User.getAll("users.json");
+		// Retrieve Tasks
+		Vector<Task> vTasks = Task.getAll("storage/tasks.json");
+		// Store Users
+		User.storeAll(users, "users.json");		
+		// Store Tasks
+		Task.storeAll(vTasks, "storage/tasks.json");
+
+		
 		this.groups = new Vector<Group>();
-		Vector<User> users = new Vector<User>();
-		users.add(new User("lel"));
-		users.add(new User("lol"));
-		users.add(new User("lul"));
-		users.add(new User("lal"));
-		users.add(new User("lil"));
 		Vector<User> users2 = new Vector<User>();
 		users2.add(new User("lel2"));
 		users2.add(new User("lol2"));
@@ -120,12 +124,6 @@ public class GraphicUserInterface extends Application {
 			this.groupItem.getChildren().add(newItem);
 		}
 		
-		Vector<Task> vTasks = new Vector<Task>();
-		vTasks.add(new Task("toto", "implzrzrement graphic vxcvcwxvxcbuttonefzed to toto Activity", "onlyonewhocansendmessageandit'snormal;)"));
-		vTasks.add(new Task("toto", "implzrzed to toto Activity", "onlyonewhocansendmessageandit'snormal;)"));
-		vTasks.add(new Task("toto", " to toto Activity", "onlyonewhocansendmessageandit'snormal;)"));
-		vTasks.add(new Task("toto", "implzrzrement grvcwxvxcbuttono toto Activity", "onlyonewhocansendmessageandit'snormal;)"));
-		vTasks.add(new Task("toto", "implzrzrcvcwxvxcbuttonefzed to toto Activity", "onlyonewhocansendmessageandit'snormal;)"));
 		
 		Project p = new Project("test", vTasks, vGrp, Dashboard.getInstance());
 		
