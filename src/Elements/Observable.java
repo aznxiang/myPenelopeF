@@ -21,7 +21,9 @@ public class Observable {
 	}
 	
 	public void notifyObserver(Message message) {
+		System.out.println("message =" + message.getMessage());
 		for (IObserver observer : observers) {
+			System.out.println("through devices");
 			observer.notifyChange(message);
 		}
 	}

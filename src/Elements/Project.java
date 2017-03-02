@@ -7,18 +7,28 @@ public class Project extends Observable {
 	private String name;
 	private String path;
 	private Vector<Group> groups;
-	private Vector<Document> documents;
 	private Vector<Task> tasks;
 	
-	public Project(String name, String path, Vector<Group> groups) {
+	public Project(String name, IObserver observer) {
+		this.name = name;
+		this.tasks = new Vector<Task>();
+		this.groups = new Vector<Group>();
+		this.addObserver(observer);
+	}
+	
+	public Project(String name, Vector<Task> tasks, Vector<Group> groups, IObserver observer) {
+		this.name = name;
+		this.tasks = tasks;
+		this.groups = groups;
+		this.addObserver(observer);
+	}
+	
+	public Project(String name, String path, Vector<Group> groups, IObserver observer) {
 		this.name = name;
 		this.path = path;
 		this.groups = groups;
-		this.documents = new Vector<Document>();
-	}
-	
-	public Project(String name) {
-		this.name = name;
+		this.tasks = new Vector<Task>();
+		this.addObserver(observer);
 	}
 	
 	public String getName() {
@@ -45,20 +55,16 @@ public class Project extends Observable {
 		this.groups = groups;
 	}
 	
-	public Vector<Document> getDocuments() {
-		return (this.documents);
-	}
-	
-	public void setDocuments(Vector<Document> documents) {
-		this.documents = documents;
-	}
-	
 	public Vector<Task> getTasks() {
 		return (this.tasks);
 	}
 	
 	public void setTasks(Vector<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	public void addTask(Task task) {
+		this.tasks.add(task);
 	}
 	
 	//TODO

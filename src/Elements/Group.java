@@ -6,13 +6,16 @@ public class Group extends Observable {
 	private String name;
 	private Vector<User> users;
 	
-	public Group(String name, Vector<User> users) {
+	public Group(String name, Vector<User> users, IObserver observer) {
 		this.name = name;
 		this.users = users;
+		this.addObserver(observer);
 	}
 	
-	public Group(String name) {
+	public Group(String name, IObserver observer) {
 		this.name = name;
+		this.addObserver(observer);
+		this.users = new Vector<User>();
 	}
 	
 	public String getName() {
@@ -29,5 +32,9 @@ public class Group extends Observable {
 	
 	public void setUsers(Vector<User> users) {
 		this.users = users;
+	}
+	
+	public void addUser(User user) {
+		this.users.add(user);
 	}
 }
